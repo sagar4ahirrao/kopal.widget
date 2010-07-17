@@ -88,7 +88,7 @@ note.renderEdit = function() {
     kopal.widget.GetRecord(null, 'heading', function(response){
       var heading_tag = Y.Node.create("<h2></h2>");
       heading_tag.setAttribute('id', 'Heading');
-      heading_tag.set('innerHTML', response.responseText || '[Heading]');
+      heading_tag.set('innerHTML', response.responseText.trim() || '[Heading]');
       //Error: Node cannot be inserted at the specified point in the hierarchy" code: "3
       //Why note.canvas not defined here? (10-June-2010)
       //Update 15-June-2010, both Firefox/Firebug and Google Chrome now fail silently without
@@ -111,7 +111,7 @@ note.renderEdit = function() {
       var note_tag = Y.Node.create("<textarea></textarea>");
       var submit_tag = Y.Node.create("<button></button");
       note_tag.setAttribute('id', 'Note');
-      note_tag.set('innerHTML', response.responseText || 'Enter note here.');
+      note_tag.set('innerHTML', response.responseText);
       submit_tag.setAttribute('id', 'Submit');
       submit_tag.set('innerHTML', 'Save note');
       Y.one('#WidgetCanvas').appendChild(note_tag);
